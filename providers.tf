@@ -7,6 +7,7 @@ provider "azurerm" {
 # - Env vars: ARM_CLIENT_ID, ARM_CLIENT_SECRET, ARM_TENANT_ID (for service principal)
 
 # These providers will connect to AKS once it's created
+# Configure Kubernetes provider
 provider "kubernetes" {
   host                   = azurerm_kubernetes_cluster.aks.kube_config[0].host
   client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_config[0].client_certificate)
@@ -14,11 +15,7 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate)
 }
 
+# Configure Helm provider (no nested kubernetes block, no kubernetes_alias)
 provider "helm" {
-  kubernetes = {
-    host                   = azurerm_kubernetes_cluster.aks.kube_admin_config[0].host
-    client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_certificate)
-    client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_key)
-    cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].cluster_ca_certificate)
-  }
+  # Nothing special here — it will automatically use the default kubernetes provider
 }
