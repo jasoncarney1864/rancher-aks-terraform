@@ -17,7 +17,8 @@ This Terraform configuration provisions an Azure Kubernetes Service (AKS) cluste
 ## Quick start
 1) Configure variables:
 	- Copy `terraform.tfvars.example` to `terraform.tfvars` and update values, especially:
-	  - `rancher_hostname` = your DNS name
+	- If you own a domain: set `rancher_hostname` to your DNS name
+	- If you DO NOT own a domain: after first apply creates the ingress IP, use the output `suggested_sslip_hostname` and set `rancher_hostname` to that value (e.g., `rancher.<IP>.sslip.io`), then re-apply
 	  - Optionally set `letsencrypt_email` to enable automatic HTTPS (staging or production)
 
 2) Initialize and validate:
@@ -33,8 +34,8 @@ This Terraform configuration provisions an Azure Kubernetes Service (AKS) cluste
 	```
 
 4) Point DNS to ingress public IP:
-	- After apply, check output `ingress_public_ip`
-	- Create an A record for `rancher_hostname` pointing to that IP
+	- If you own a domain: after apply, check output `ingress_public_ip` and create an A record for `rancher_hostname` pointing to that IP
+	- If you do NOT own a domain: skip DNS; use `suggested_sslip_hostname` instead and set it as `rancher_hostname`, then `terraform apply` again
 
 5) Access Rancher:
 	- URL: output `rancher_url`

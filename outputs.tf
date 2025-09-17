@@ -29,3 +29,8 @@ output "rancher_bootstrap_password" {
   sensitive   = true
   description = "Initial Rancher admin password (username: admin). Change it after first login."
 }
+
+output "suggested_sslip_hostname" {
+  value       = try("rancher.${data.kubernetes_service.ingress_nginx_controller.status[0].load_balancer[0].ingress[0].ip}.sslip.io", null)
+  description = "If you don't have a domain, use this hostname with sslip.io (set rancher_hostname to this)."
+}

@@ -25,13 +25,13 @@ variable "kubernetes_version" {
 variable "node_count" {
   description = "AKS system node count"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "node_vm_size" {
   description = "VM size for AKS system node pool"
   type        = string
-  default     = "Standard_DS2_v2"
+  default     = "Standard_B2ms"
 }
 
 variable "rancher_hostname" {
@@ -42,7 +42,7 @@ variable "rancher_hostname" {
 variable "rancher_replicas" {
   description = "Number of Rancher server replicas"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "letsencrypt_email" {

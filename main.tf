@@ -27,7 +27,10 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vm_size             = var.node_vm_size
     node_count          = var.node_count
     os_sku              = "Ubuntu"
-    only_critical_addons_enabled = true
+    only_critical_addons_enabled = false
+  auto_scaling_enabled         = true
+    min_count                    = 1
+    max_count                    = 2
   }
 
   identity {
