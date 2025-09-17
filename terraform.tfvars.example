@@ -1,0 +1,16 @@
+# Copy this file to terraform.tfvars and adjust values
+name_prefix           = "rancher"
+location              = "eastus"
+node_count            = 3
+node_vm_size          = "Standard_DS2_v2"
+
+# Must be a DNS name you control that will point to the ingress public IP (output provided)
+rancher_hostname      = "rancher.example.com"
+
+# Optional: enable Let's Encrypt by providing an email
+letsencrypt_email        = null   # e.g., "admin@example.com" to enable
+letsencrypt_environment  = "staging" # or "production"
+
+tags = {
+  project = "rancher-aks"
+}
