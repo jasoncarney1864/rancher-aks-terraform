@@ -1,0 +1,15 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and customize the values
+
+# Required: Email address for Let's Encrypt certificate registration
+acme_email = "your-email@example.com"
+
+# Optional: Override default values as needed
+# project_name = "rancher-aks"
+# environment = "dev"
+# location = "eastus2"
+# node_vm_size = "Standard_B2ms"
+# node_count = 1
+# kubernetes_version = "1.27.7"  # Leave unset to use Azure's default
+# letsencrypt_environment = "staging"  # Use "production" for real certificates
+# ip_dns_provider = "sslip.io"  # Or "nip.io"

@@ -1,0 +1,34 @@
+{
+  "name": "Rancher AKS Terraform",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "kubectl": "latest",
+      "helm": "latest",
+      "minikube": "none"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-kubernetes-tools.vscode-helm",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-azure-tools"
+      ],
+      "settings": {
+        "terraform.languageServer.enable": true,
+        "terraform.validation.enable": true,
+        "files.associations": {
+          "*.tf": "terraform",
+          "*.tfvars": "terraform"
+        }
+      }
+    }
+  },
+  "postCreateCommand": "terraform version && az --version && kubectl version --client && helm version",
+  "remoteUser": "vscode"
+}
