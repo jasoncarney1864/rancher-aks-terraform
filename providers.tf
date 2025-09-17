@@ -15,7 +15,6 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate)
 }
 
-# Configure Helm provider (no nested kubernetes block, no kubernetes_alias)
 provider "helm" {
-  # Nothing special here — it will automatically use the default kubernetes provider
+  # Helm will automatically reuse the default kubernetes provider
 }
