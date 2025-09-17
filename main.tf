@@ -14,6 +14,11 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.tags
 }
 
+resource "random_password" "rancher_bootstrap" {
+  length  = 20
+  special = false
+}
+
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = "${local.name}-aks"
   location            = azurerm_resource_group.rg.location
