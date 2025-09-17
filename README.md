@@ -19,6 +19,15 @@ The setup uses dynamic IP-based DNS (sslip.io or nip.io) to automatically genera
 
 ## Quick Start with GitHub Codespaces
 
+### Option 1: Automated Quick Start
+1. **Open in Codespaces**: Click the "Code" button in GitHub and select "Create codespace on main"
+2. **Run the quick start script**:
+   ```bash
+   ./quick-start.sh
+   ```
+   This script will guide you through the entire setup process.
+
+### Option 2: Manual Setup
 1. **Open in Codespaces**: Click the "Code" button in GitHub and select "Create codespace on main"
 
 2. **Login to Azure**: Once the codespace is ready, authenticate with Azure:
