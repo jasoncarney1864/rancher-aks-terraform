@@ -13,7 +13,10 @@ variable "location" {
 variable "tags" {
   description = "Common resource tags"
   type        = map(string)
-  default     = {}
+  default     = {
+    project = "rancher-aks"
+    owner   = "Jason Carney"
+  }
 }
 
 variable "kubernetes_version" {
