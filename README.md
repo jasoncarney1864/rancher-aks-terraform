@@ -1,2 +1,3 @@
 # rancher-aks-terraform
-Terraform project to deploy Rancher on AKS, structured for multi‑cloud portability.
+Terraform IaC for deploying a Rancher‑managed Kubernetes cluster on Azure Kubernetes Service (AKS). 
+Includes step‑by‑step validation and teardown instructions.
