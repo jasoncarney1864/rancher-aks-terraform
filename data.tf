@@ -4,5 +4,5 @@ data "kubernetes_service" "ingress_nginx_controller" {
     namespace = "ingress-nginx"
   }
 
-  depends_on = [helm_release.ingress_nginx]
+  depends_on = [module.ingress_nginx]
 }

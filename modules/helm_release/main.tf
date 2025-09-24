@@ -5,11 +5,5 @@ resource "helm_release" "this" {
   namespace        = var.namespace
   create_namespace = var.create_namespace
 
-  dynamic "set" {
-    for_each = var.sets
-    content {
-      name  = set.key
-      value = set.value
-    }
-  }
+  values = var.sets != null ? [yamlencode(var.sets)] : []
 }
