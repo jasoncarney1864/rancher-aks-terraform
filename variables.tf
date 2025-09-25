@@ -13,7 +13,7 @@ variable "location" {
 variable "tags" {
   description = "Common resource tags"
   type        = map(string)
-  default     = {
+  default = {
     project = "rancher-aks"
     owner   = "Jason Carney"
   }
@@ -62,4 +62,10 @@ variable "letsencrypt_environment" {
     condition     = contains(["staging", "production"], var.letsencrypt_environment)
     error_message = "letsencrypt_environment must be 'staging' or 'production'"
   }
+}
+
+variable "kubeconfig_path" {
+  description = "Optional path to kubeconfig file for Kubernetes/Helm providers. If null, ~/.kube/config is used."
+  type        = string
+  default     = null
 }

@@ -20,6 +20,6 @@ variable "create_namespace" {
 }
 
 variable "sets" {
-  type    = map(string)
+  type    = map(any)
   default = {}
 }

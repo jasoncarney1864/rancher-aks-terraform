@@ -17,7 +17,7 @@ module "cert_manager" {
   namespace        = "cert-manager"
   create_namespace = true
   sets = {
-    installCRDs = "true"
+    installCRDs = true
   }
 
   depends_on = [azurerm_kubernetes_cluster.aks]

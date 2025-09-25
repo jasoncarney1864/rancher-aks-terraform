@@ -4,17 +4,13 @@ provider "azurerm" {
 }
 
 provider "kubernetes" {
-  host                   = azurerm_kubernetes_cluster.aks.kube_admin_config[0].host
-  client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_certificate)
-  client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_key)
-  cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].cluster_ca_certificate)
+  # Use local kubeconfig file to decouple provider init from AKS resource creation
+  config_path = coalesce(var.kubeconfig_path, pathexpand("~/.kube/config"))
 }
 
 provider "helm" {
+  # Helm v3 provider syntax: supply Kubernetes connection as an attribute object
   kubernetes = {
-    host                   = azurerm_kubernetes_cluster.aks.kube_admin_config[0].host
-    client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_certificate)
-    client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].client_key)
-    cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config[0].cluster_ca_certificate)
+    config_path = coalesce(var.kubeconfig_path, pathexpand("~/.kube/config"))
   }
 }
